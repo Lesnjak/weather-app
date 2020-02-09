@@ -1,0 +1,26 @@
+<%- include('layout/header.ejs') %>
+<div class="main">
+<div class="sidebar">
+    <div class="box auth">
+        <h2>Login</h2>
+        <% if(form.error){ %>
+            <p class="error" id="register-error"><%=form.error%></p>
+        <%}%>
+        <form method="post" action = '/login' id="login">
+            <div class="form-group">
+                <label for="login-email" >Email</label>
+                <input type="text" id="login-email" value="<%= form.body && form.body.email%>" class="<%= form.fields && (!form.fields.includes("email") ? '' : 'error') %>"  name="email" />
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" value="<%= form.body && form.body.password%>" class="<%= form.fields && (!form.fields.includes("password") ? '' : 'error') %>" name="password" />
+            </div>
+            <div class="buttons">
+                <button class="login-button">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<%- include ('layout/footer.ejs') %>

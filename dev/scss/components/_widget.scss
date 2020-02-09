@@ -1,0 +1,179 @@
+/* Variables */
+/* Styles */
+
+
+.component--weatherBox {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid $primaryColor;
+  border-radius: 3px;
+  position: relative;
+  .wi{
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
+.img-panel{
+  position: relative;
+  min-height: 500px;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  &:before{
+    position: absolute;
+    content: "";
+    z-index: 1;
+    background-color: rgba(#338982,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.panel {
+  padding:20px 50px;
+  color: #fff;
+  background-color: $primaryColor;
+  display: flex;
+  justify-content: space-between;
+}
+.weather-data {
+  position: relative;
+}
+
+h1 {
+  margin-top: 25px;
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 80px;
+  margin-right: 20px;
+}
+.weekWeather{
+  display: flex;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.currentTemp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .listWeather{
+    display: flex;
+  }
+}
+.currentTemp .degrees {
+  line-height: 40px;
+}
+.currentTemp .wi-degrees {
+  margin-left: -10px;
+  vertical-align: top !important;
+}
+.component--weatherBox-row {
+  position: relative;
+  z-index:10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px 0;
+  .component--weatherBox-wrapper{
+
+  }
+}
+.weather-content {
+  text-align: center;
+  width: calc(100% / 4 - 40px);
+  margin: 20px;
+}
+.blur-pannel{
+  overflow:hidden;
+  background-repeat: no-repeat;
+  background-position: top 0 left 0;
+  background-size: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  width: 110px;
+  filter: blur(2px);
+  z-index: 0;
+  &:before{
+    position: absolute;
+    content: "";
+    background-color: rgba(#338982,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.component--weatherBox-heading {
+  border-left: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 800;
+  padding: 10px;
+}
+
+.component--weatherBox-info {
+  color:#fff;
+  padding-bottom: 10px;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+small {
+  font-size: 12px;
+}
+.timeWrapper{
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin-left: 20px;
+  .icon{
+    position: relative;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    img{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform:translate(-50%, -50%);
+    }
+  }
+}
+
+.deskr{
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  .rotate{
+      transform: rotate(180deg);
+  }
+  .population{
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+  span{
+    display: flex;
+    align-items: center;
+  }
+
+  img{
+    width:50px;
+    margin-right: 10px;
+
+  }
+}

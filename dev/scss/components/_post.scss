@@ -1,0 +1,25 @@
+.post {
+  display: flex;
+  flex-direction: column;
+   h2{
+     font-size: 40px;
+     color: $primaryColor;
+     margin-top: 0;
+   }
+  .top {
+    h2 {
+      margin-top: 0;
+    }
+  }
+  .body {
+    p {
+      text-align: justify;
+    }
+  }
+
+  .bottom {
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
+  }
+}

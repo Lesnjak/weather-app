@@ -1,0 +1,30 @@
+<%- include('layout/header.ejs') %>
+<div class="main">
+<div class="sidebar">
+    <div class="box auth">
+        <h2>Registration</h2>
+        <% if(form.error){ %>
+        <p class="error" id="register-error"><%=form.error%></p>
+        <%}%>
+        <form method="post" id="register" action = '/registration' >
+            <div class="form-group">
+                <label for="register-email">E-mail</label>
+                <input type="text" id="register-email" value="<%= form.body && form.body.email%>" class="<%= form.fields && (!form.fields.includes("email") ? '' : 'error') %>" name="email" />
+            </div>
+            <div class="form-group">
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" value="<%= form.body && form.body.password%>" class="<%= form.fields && (!form.fields.includes("password") ? '' : 'error') %>" name="password" />
+            </div>
+            <div class="form-group">
+                <label for="register-name">Name</label>
+                <input type="text" id="register-name" value="<%= form.body && form.body.name%>" class="<%= form.fields && (!form.fields.includes("name") ? '' : 'error') %>" name="name" />
+            </div>
+            <div class="buttons">
+                <button class="register-button">Регистрация</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<%- include ('layout/footer.ejs') %>

@@ -1,0 +1,51 @@
+<%- include('layout/header.ejs') %>
+
+<%
+getIconUrl = function(value) {
+    return `http://openweathermap.org/img/wn/${value}@2x.png`
+}
+getCurrentWeather = function(currentWeather) {
+    let timeWeather =
+            `<div class="timeWrapper weather-list__now ">
+
+        <div class="icon">
+               <img src="${getIconUrl(currentWeather.weather[0].icon)}" alt="" >
+         </div>
+      <div class="temp wi wi-degrees">${currentWeather.main.temp.toFixed(0)}</div>
+
+        </div>`
+
+    return timeWeather
+
+}
+
+ %>
+<div class="main">
+    <div class="container">
+        <div class="content">
+            <div class="post">
+                <h2>You can select several cities to view the weather </h2>
+                <div class="search-wrapper  <%= error ? "error-class" : "" %>">
+                    <input id="place-search" type="text" class='search-input' placeholder="select city or country"> <span class="search-button" ><i class="fas fa-search"></i></span>
+                    <% if(error){%>
+                        <p class="error-string"><%= error %></p>
+                    <%}%>
+                </div>
+
+                <div class="weather-list">
+                <% weatherList.forEach(function(item){ %>
+                    <a href="admin/<%=item.currentWeather.name.toLowerCase() %>" class="weather-list__item">
+                        <p class="weather-list__name"><%=item.currentWeather.name %></p>
+                        <%- getCurrentWeather(item.currentWeather) %>
+                    </a>
+                <%  }); %>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<%- include ('layout/footer.ejs') %>

@@ -1,0 +1,96 @@
+<%
+getTimeFormat= function(value) {
+  return moment.unix(value).format('HH:MM')
+}
+getTimeFormatHours= function(value) {
+    return moment.unix(value).format('HH')
+}
+
+getIconUrl = function(value) {
+    return `http://openweathermap.org/img/wn/${value}@2x.png`
+}
+getDaysWeather = function(list) {
+    const keys = Object.keys(list);
+    console.log(keys);
+    let timeWeather = '';
+    keys.forEach(function(key,idx) {
+        if(idx>0){
+        timeWeather+= `<div class="weekWeather">
+                    <h1 >${moment.unix(list[key][0].dt).format('ddd')}</h1>`
+        list[key].forEach(function(list){
+            timeWeather+= `<div class="timeWrapper">
+                <div class="time">${getTimeFormatHours(list.dt)}:00</div>
+                <div class="icon">
+                       <img src="${getIconUrl(list.weather[0].icon)}" alt="" >
+                 </div>
+                <div class="temp wi wi-degrees">${list.main.temp.toFixed(0)}</div>
+               </div>`
+        })
+        timeWeather+= `</div>`
+        }
+    })
+    return timeWeather
+
+}
+getCurrentWeather = function(list,currentWeather) {
+    const newList = Object.values(list);
+    let timeWeather = ''
+    timeWeather+= `<div class="timeWrapper">
+        <div class="time">NOW</div>
+        <div class="icon">
+               <img src="${getIconUrl(currentWeather.weather[0].icon)}" alt="" >
+         </div>
+        <div class="temp wi wi-degrees">${currentWeather.main.temp.toFixed(0)}</div>
+        </div>`
+    newList[0].forEach((list)=>{
+        timeWeather+= `<div class="timeWrapper">
+        <div class="time">${getTimeFormatHours(list.dt)}:00</div>
+        <div class="icon">
+               <img src="${getIconUrl(list.weather[0].icon)}" alt="" >
+         </div>
+        <div class="temp wi wi-degrees">${list.main.temp.toFixed(0)}</div>
+        </div>`
+    })
+
+    return timeWeather
+
+}
+%>
+
+<div class="component--weatherBox">
+    <div class="panel">
+        <div class="weather-data">
+            <h1><%= weatherList.city.name %></h1>
+           <div class="deskr">
+               <span > population:&nbsp; </span>
+               <span> <%= weatherList.city.population %></span>
+           </div>
+            <div class="deskr">
+                <span>sunrise:&nbsp; </span>
+                <span> <%= getTimeFormat(weatherList.city.sunrise) %></span>
+            </div>
+            <div class="deskr">
+                <span > sunset:&nbsp; </span>
+                <span><%= getTimeFormat(weatherList.city.sunset) %></span>
+            </div>
+        </div>
+        <div class="currentTemp">
+                    <h1>Today</h1>
+                    <div class="listWeather">
+                        <%- getCurrentWeather(weatherList.list,currentWeather.weather) %>
+                    </div>
+
+
+        </div>
+    </div>
+    <div class="img-panel"
+         style="background-image: url('<%= currentWeather.images[0] %>>')">
+        <div class="component--weatherBox-row">
+            <div class="component--weatherBox-wrapper">
+                <%- getDaysWeather(weatherList.list)%>
+            </div>
+
+        </div>
+
+    </div>
+
