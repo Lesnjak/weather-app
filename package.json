@@ -8,7 +8,7 @@
     "dev": "gulp & nodemon app.js"
   },
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.0.3",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
